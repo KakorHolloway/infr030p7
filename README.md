@@ -50,7 +50,7 @@ Pour vérifier que vous êtes authentifiés, lancez la commande ```oc get pod```
 
 ## Exo 1) Création de votre premier pod
 
-Via un fichier yaml ou une commande impérative ( oc run <monpod>... ), créez votre premier pod httpd. 
+Via un fichier yaml ou une commande impérative ( oc run <monpod>... ), créez votre premier pod nginx. 
 
 Celui-ci doit utiliser l'image suivante: harbor.kakor.ovh/public/nginx-rootless:latest
 
