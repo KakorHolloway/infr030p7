@@ -105,3 +105,38 @@ Le second sera un pod avec l'image harbor.kakor.ovh/public/curl:latest. Ce pod a
 Ensuite, créez le service nommé nginx qui va permettre au pod curl de lancer la comande de test pour accéder au pod nginx. 
 
 Vérifiez que tout fonctionne correctement. 
+
+## Correction 3) 
+
+Création du service :
+
+oc create service clusterip nginx --tcp:80:80 --dry-run -o yaml
+
+Aller sur le pod curl :
+
+oc exec -it curl -- /bin/sh
+
+## Exo 4) Exposition de votre application 
+
+En gardant les éléments créés lors de l'exercice 3, ajoutez un ingress en réadaptant l'exemple ci-dessous pour que ce dernier puisse vous permettre d'accéder en https à l'application nginx :
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+spec:
+  rules:
+    - host: <nomquevoussouhaitez>.apps.openshift.kakor.ovh
+      http:
+        paths:
+        - path: ''
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: frontend
+              port:
+                number: 443
+  tls:
+  - {}
+```
