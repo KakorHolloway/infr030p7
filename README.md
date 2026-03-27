@@ -87,3 +87,5 @@ Corrigez cette erreur en mettant en place le security context suivant :
 securityContext:
   allowPrivilegeEscalation: true
 ```
+
+oc replace --force -f .\exo2\pod.yaml
