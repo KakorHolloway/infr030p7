@@ -83,5 +83,7 @@ Ce pod ne devrait pas fonctionner, d'après les logs expliquez pourquoi cela ne 
 
 Corrigez cette erreur en mettant en place le security context suivant :
 
+```yaml
 securityContext:
   allowPrivilegeEscalation: true
+```
