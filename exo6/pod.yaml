@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: harbor.kakor.ovh/public/nginx:latest
+    ports:
+    - containerPort: 80
+    securtyContext:
+      allowPrivilegeEscalation: true
+    volumeMounts:
+    - name: index-cm
+      mountPath: "/usr/share/nginx/html"
+  volumes:
+  - name: index-cm
+    configMap:
+      name: index

@@ -4,7 +4,7 @@ metadata:
   name: frontend
 spec:
   rules:
-    - host: <nomquevoussouhaitez>.apps.openshift.kakor.ovh
+    - host: correction.apps.openshift.kakor.ovh
       http:
         paths:
         - path: ''
