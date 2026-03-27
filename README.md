@@ -57,3 +57,31 @@ Celui-ci doit utiliser l'image suivante: harbor.kakor.ovh/public/nginx-rootless:
 Afin de confirmer que le pod existe, utilisez la commande ```oc get pod```
 
 ``` oc logs <nomduconteneur> ``` => permet d'identifier les logs du conteneur et ainsi trouver des réponses à des problèmes techniques. 
+## Correction 1) 
+
+oc run nginx --image=harbor.kakor.ovh/public/nginx-rootless:latest
+
+oc apply -f .\exo1\pod.yaml
+
+Pour décrire le pod :
+
+oc describe pod nginx
+
+Pour executer des commandes dans le pod
+
+oc exec -it nginx -- /bin/bash
+
+ctrl + d pour sortir du conteneur ou exit
+
+netstat -a pour vérifier les ports d'écoute (ou curl avec de la chance)
+
+## Exo 2) 
+
+Après avoir supprimé le pod de l'exo d'avant. Créez un nouveau pod avec l'image harbor.kakor.ovh/public/nginx:latest
+
+Ce pod ne devrait pas fonctionner, d'après les logs expliquez pourquoi cela ne fonctionne pas. 
+
+Corrigez cette erreur en mettant en place le security context suivant :
+
+securityContext:
+  allowPrivilegeEscalation: false
