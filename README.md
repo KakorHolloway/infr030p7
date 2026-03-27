@@ -149,4 +149,5 @@ Créez un nouveau pod basé sur l'image mariadb suivante : harbor.kakor.ovh/publ
 
 Ce dernier ne fonctionnera pas correctement, via les logs identifiez l'erreur. 
 
-Corrigez l'erreur sur l'image mariadb en mettant les bonnes variables d'environnement 
+Corrigez l'erreur sur l'image mariadb en mettant les bonnes variables d'environnement. 
+

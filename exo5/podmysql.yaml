@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  containers:
+  - name: mariadb
+    image: harbor.kakor.ovh/public/mariadb:latest
+    env:
+    - name: MARIADB_ROOT_PASSWORD
+      value: "B4teau123!"
+    ports:
+    - containerPort: 3306
+    securtyContext:
+      allowPrivilegeEscalation: true
