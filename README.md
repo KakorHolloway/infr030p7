@@ -89,3 +89,19 @@ securityContext:
 ```
 
 oc replace --force -f .\exo2\pod.yaml
+
+## Exemple de création de yaml rapide
+
+oc run nginx --image=nginx --port 80 **--dry-run=client -o yaml** > fichierpod.yaml
+
+## Exo 3) Mise en place des services
+
+Vous allez devoir créer 2 pods : 
+
+Un premier pod sera un pod nginx avec l'image harbor.kakor.ovh/public/nginx:latest
+
+Le second sera un pod avec l'image harbor.kakor.ovh/public/curl:latest. Ce pod aura pour objectif de vérifier si vous pouvez tester d'accéder au serveur nginx du premier pod. Attention, à la création de ce mod une commande (regardez l'option command dans la documentation Kubernetes) devra être lancée pour que le pod ne s'arrête pas automatiquement. 
+
+Ensuite, créez le service nommé nginx qui va permettre au pod curl de lancer la comande de test pour accéder au pod nginx. 
+
+Vérifiez que tout fonctionne correctement. 
