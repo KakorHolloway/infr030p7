@@ -140,3 +140,11 @@ spec:
   tls:
   - {}
 ```
+
+## Exo 5) 
+
+Supprimez les différents objets Kubernetes que vous avez créé jusqu'à présent. 
+
+Créez un nouveau pod basé sur l'image mariadb suivante : harbor.kakor.ovh/public/mariadb:latest
+
+Ce dernier ne fonctionnera pas correctement, via les logs identifiez l'erreur. 
