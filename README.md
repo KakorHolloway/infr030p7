@@ -148,3 +148,5 @@ Supprimez les différents objets Kubernetes que vous avez créé jusqu'à prése
 Créez un nouveau pod basé sur l'image mariadb suivante : harbor.kakor.ovh/public/mariadb:latest
 
 Ce dernier ne fonctionnera pas correctement, via les logs identifiez l'erreur. 
+
+Corrigez l'erreur sur l'image mariadb en mettant les bonnes variables d'environnement 

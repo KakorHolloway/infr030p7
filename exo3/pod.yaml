@@ -8,6 +8,9 @@ spec:
   containers:
   - name: nginx
     image: harbor.kakor.ovh/public/nginx:latest
+    env:
+    - name: DEMO_ENV
+      value: "Hello World"
     ports:
     - containerPort: 80
     securtyContext:
