@@ -151,3 +151,22 @@ Ce dernier ne fonctionnera pas correctement, via les logs identifiez l'erreur.
 
 Corrigez l'erreur sur l'image mariadb en mettant les bonnes variables d'environnement. 
 
+## Exo 6) Les configmap 
+
+Recreez votre pod nginx avec son service et son ingress (fichiers pod.yaml, service.yaml dans le dossier ezxo3 + ingress.yaml avec le bon host)
+
+Dans le pod nginx, localisez l'emplacement du fichier index.html à partir de la configuration nginx présente dans le conteneur nginx (/etc/nginx/conf.d/default.conf)
+
+Modifiez le fichier index.html à travers une commande echo
+
+Vérifiez si la valeur à bien changé à travers l'url de votre ingress. 
+
+Créez une configmap à travers un fichier index.html de votre choix. 
+
+Pour créer la configmap, vous pouvez utiliser la commande ``` oc create configmap maconfigmap --from-file=index.html ```
+
+Montez cette configmap dans le bon emplacement afin de changer de manière pérenne le fichier index.html
+
+https://kubernetes.io/docs/concepts/configuration/configmap/#using-configmaps-as-files-from-a-pod
+
+Testez votre modification (et n'hésitez pas à envoyer des captures d'écran)
