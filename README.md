@@ -52,7 +52,7 @@ Pour vérifier que vous êtes authentifiés, lancez la commande ```oc get pod```
 
 Via un fichier yaml ou une commande impérative ( oc run <monpod>... ), créez votre premier pod httpd. 
 
-Celui-ci doit utiliser l'image suivante: harbor.kakor.ovh/public/httpd:latest
+Celui-ci doit utiliser l'image suivante: harbor.kakor.ovh/public/nginx-rootless:latest
 
 Afin de confirmer que le pod existe, utilisez la commande ```oc get pod```
 
