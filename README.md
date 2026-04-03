@@ -157,6 +157,8 @@ Recreez votre pod nginx avec son service et son ingress (fichiers pod.yaml, serv
 
 Dans le pod nginx, localisez l'emplacement du fichier index.html à partir de la configuration nginx présente dans le conteneur nginx (/etc/nginx/conf.d/default.conf)
 
+**Le chemin du fichier index.html c'est /usr/share/nginx/html**
+
 Modifiez le fichier index.html à travers une commande echo
 
 Vérifiez si la valeur à bien changé à travers l'url de votre ingress. 
@@ -170,3 +172,7 @@ Montez cette configmap dans le bon emplacement afin de changer de manière pére
 https://kubernetes.io/docs/concepts/configuration/configmap/#using-configmaps-as-files-from-a-pod
 
 Testez votre modification (et n'hésitez pas à envoyer des captures d'écran)
+
+## Exo 7) Les secrets
+
+A travers un secret, créez un pod via l'image harbor.kakor.ovh/public/mariadb:latest. Ce secret devra contenir le mot de passe de la base de donnée. 
