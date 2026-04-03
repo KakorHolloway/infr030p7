@@ -176,3 +176,18 @@ Testez votre modification (et n'hésitez pas à envoyer des captures d'écran)
 ## Exo 7) Les secrets
 
 A travers un secret, créez un pod via l'image harbor.kakor.ovh/public/mariadb:latest. Ce secret devra contenir le mot de passe de la base de donnée. 
+
+https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/
+
+## Exo 8) Les PV PVC
+
+Créez un pod nginx dans lequel vous monterez un PVC dans le chemin /usr/share/nginx/html.
+
+Pour créer le PV qui va vous permettre de stocker de la donnée vous aller utiliser un espace NFS. 
+
+Le serveur à joindre est le 192.168.1.56 sur le chemin /Volume1/public/nfs-share-openshift/groupe-x (x correspond au numéro de groupe)
+
+Pour que votre PVC soit lié à votre PV, vous pouvez utiliser le champ ```volumeName: <nom du volume>```
+
+Remplissez à travers le pod un fichier index.html, détruisez le pod avant de le remonter pour vérifier que la donnée n'a pas été perdu. 
+ 
