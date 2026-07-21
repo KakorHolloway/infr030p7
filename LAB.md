@@ -16,3 +16,16 @@ Provisionnez 2 VMs avec ses prérequis :
 
 Une vm devra s'appeller controlplane-01, et l'autre worker-01
 
+## Options d'installation des VMs selon les panels :
+
+Menu "type of installation" => Ubuntu Server
+
+De préférence utilisez une adresse ip fixe
+
+Dans "Configuration de stockage Guidée" décochez la case Set up this disk as an LVM group
+
+Upgrade to Ubuntu pro => On skip
+
+SSH configuration => On installe
+
+Features server snaps => On laisse vide
