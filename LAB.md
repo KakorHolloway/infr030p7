@@ -76,3 +76,55 @@ Sur les deux VM lancez les commandes suivante pour installer les binaires rke2 (
 ````
 curl -sfL https://get.rke2.io | sudo sh -
 ````
+
+### Mise en place du fichier config 
+
+Sur la machine controlplane-01 : 
+
+Créez et éditez le fichier config.yaml
+
+````
+mkdir -p /etc/rancher/rke2 
+vi /etc/rancher/rke2/config.yaml
+````
+
+Dans le fichier mettez en place les éléments suivants :
+
+````yaml
+tls-san:
+  - "foo.local"
+````
+
+Une fois que le fichier est configuré, lancez les commandes suivantes pour démarrer le service rke2-server et procéder ainsi à l'installation :
+
+````
+systemctl enable rke2-server.service
+systemctl start rke2-server.service
+````
+
+### Vérification de l'installation (toujours sur le controlplane-01)
+
+Lancez la commande suivante :
+
+````
+wget https://github.com/okd-project/okd/releases/download/4.22.0-okd-scos.7/openshift-client-linux-4.22.0-okd-scos.7.tar.gz
+
+tar -xvf openshift-client-linux-4.22.0-okd-scos.7.tar.gz
+
+cp kubectl /usr/bin
+````
+
+Afin de récupérer les identifiants lancez les commandes suivantes :
+
+````
+mkdir ~/.kube
+cp /etc/rancher/rke2/rke2.yaml ~/.kube/config
+````
+
+Ensuite la commande suivante devrait fonctionner :
+
+````
+kubectl get pod -A 
+````
+
+
