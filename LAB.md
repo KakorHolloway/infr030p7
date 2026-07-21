@@ -29,3 +29,35 @@ Upgrade to Ubuntu pro => On skip
 SSH configuration => On installe
 
 Features server snaps => On laisse vide
+
+## L'installation 
+
+### Prérequis sur les VMs
+
+**A faire sur les deux VM** 
+
+Pour les commandes qui viennent, passez en root et lancez une mise à jour pour avoir la liste des packages :
+
+```
+sudo su
+apt-get update && apt-get upgrade
+````
+
+Modifiez si ce n'est pas le cas le fichier /etc/hostname pour qu'il contienne le nom de votre VM. 
+
+Enfin éditez le fichier /etc/hosts pour mettre les ip et nom de vos vm. Par exemple dans mon adressage 
+
+````
+127.0.0.1 localhost
+127.0.1.1 controlplane-01
+
+172.29.111.10 controlplane-01
+172.29.111.11 worker-01
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+````
