@@ -68,3 +68,11 @@ Vous pouvez lancer les pings pour vérifier que tout fonctionne :
 ping controlplane-01
 ping worker-01
 ````
+
+### Installation binaire RKE2
+
+Sur les deux VM lancez les commandes suivante pour installer les binaires rke2 (attention aucun service ne va se lancer) :
+
+````
+curl -sfL https://get.rke2.io | sudo sh -
+````
