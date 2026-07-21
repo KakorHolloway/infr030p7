@@ -127,4 +127,31 @@ Ensuite la commande suivante devrait fonctionner :
 kubectl get pod -A 
 ````
 
+### Ajout d'un worker (ou agent)
 
+Sur le controlplane, récupérez le token d'authentification d'un noeud au cluster :
+
+````
+cat /var/lib/rancher/rke2/server/node-token
+````
+
+Editez le fichier config.yaml avec ce token et l'adresse du controlplane-01:
+
+````
+mkdir -p /etc/rancher/rke2 
+vi /etc/rancher/rke2/config.yaml
+````
+
+````
+server: https://controlplane-01:9345
+token: <token from server node>
+tls-san:
+  - "worker-01"
+````
+
+Enfin installez l'agent :
+
+````
+systemctl enable rke2-agent.service
+systemctl start rke2-agent.service
+````
