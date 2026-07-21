@@ -61,3 +61,10 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ````
+
+Vous pouvez lancer les pings pour vérifier que tout fonctionne :
+
+````
+ping controlplane-01
+ping worker-01
+````
