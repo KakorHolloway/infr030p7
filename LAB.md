@@ -155,3 +155,44 @@ Enfin installez l'agent :
 systemctl enable rke2-agent.service
 systemctl start rke2-agent.service
 ````
+
+## Installation de rancher manager 
+
+Sur le controlplane-01 :
+
+Dans un premier temps on va installer helm 
+
+````
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+````
+Installation de cert-manager en prérequis 
+
+````
+helm repo add jetstack https://charts.jetstack.io --force-update
+helm repo update
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --set crds.enabled=true
+````
+
+Installation rancher manager
+
+````
+helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+
+helm repo update
+````
+
+````
+helm install rancher rancher-stable/rancher \
+  --namespace cattle-system \
+  --create-namespace \
+  --set hostname=rancher.local \
+  --set bootstrapPassword=<votremdp> \
+  --set replicas=1
+````
+
+Pour vous connecter à l'url rancher.local, modifiez le ficher hosts de votre machine hôte. Attention ouvrez le en tant qu'administrateur. (Moi par exemple j'ouvre notepadd++ en tant qu'admin et j'ouvre le fichier à partir de l'onglet "ouvrir")
+
+C:/Windows/System32/drivers/etc/hosts
