@@ -92,7 +92,7 @@ Dans le fichier mettez en place les éléments suivants :
 
 ````yaml
 tls-san:
-  - "foo.local"
+  - "controlplane-01"
 ````
 
 Une fois que le fichier est configuré, lancez les commandes suivantes pour démarrer le service rke2-server et procéder ainsi à l'installation :
