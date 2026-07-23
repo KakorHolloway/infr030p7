@@ -217,17 +217,15 @@ Vous pouvez mettre les valeurs suivantes :
 global:
   domain: argocd.local
 
-certificate:
-  enabled: true
+configs:
+  params:
+    server.insecure: true
+    redis.compression: none
 
 server:
   ingress:
     enabled: true
     ingressClassName: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    tls: true
 ````
 
 On peut désormais installer la solution (attention ça sera dans le namespace local):
