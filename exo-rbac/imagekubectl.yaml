@@ -4,6 +4,7 @@ metadata:
   labels:
     run: kubectl
   name: kubectl
+  namespace: correction
 spec:
   containers:
   - command:
