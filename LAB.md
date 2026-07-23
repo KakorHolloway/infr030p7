@@ -233,5 +233,5 @@ server:
 On peut désormais installer la solution (attention ça sera dans le namespace local):
 
 ````
-helm install argo-cd oci://ghcr.io/argoproj/argo-helm/argo-cd --version 10.1.4 -f argocd-values.yaml
+helm install argo-cd oci://ghcr.io/argoproj/argo-helm/argo-cd --version 10.1.4 -f argocd-values.yaml --create-namespace -n argocd
 ````
