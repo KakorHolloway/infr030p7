@@ -276,7 +276,7 @@ brew install openshift-cli
 ```
 
 
-## Connexion au cluster (pour tous)
+## Connexion au cluster
 
 Allez sur l'url https://console-openshift-console.apps.openshift.kakor.ovh authentifiez-vous avec l'utilisateur ipi-gp-1 en choisisant "KeystoneIDP".
 
@@ -288,7 +288,7 @@ Pour vérifier que vous êtes authentifiés, lancez la commande ```oc get pod```
 
 Créez votre propre namespace pour l'exercice via la commande ````oc new-project <votrenom>````
 
-##Pour tout le monde
+## Pour tout le monde
 
 Dans un premier temps créez un conteneur avec une image qui va contenir bitnami/kubectl (avec la policy ifnotpresent sur mon cluster). Attention cette image contient uniquement l'invite de commande kubectl, donc il va falloir la laisser tourner via la commande sleep 3600 par exemple au démarrage. 
 
