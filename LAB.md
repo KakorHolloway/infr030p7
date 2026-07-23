@@ -11,7 +11,7 @@ Provisionnez 2 VMs avec ses prérequis :
 - Ubuntu server 2022 ou plus (2024 dans mon cas) https://ubuntu.com/download/server/thank-you?version=22.04.5&architecture=amd64&lts=true
 - au moins 2vCPU (4 recommandés)
 - au moins 4gb de RAM chacune
-- 20 gb de disque **si il n'y a qu'une seule partition (pas de lvm)** ou sinon 127 gb en dynamique. 
+- 30 gb de disque **si il n'y a qu'une seule partition (pas de lvm)** ou sinon 127 gb en dynamique. 
 - Un accès en ssh depuis votre machine et un accès internet aux vm
 
 Une vm devra s'appeller controlplane-01, et l'autre worker-01
@@ -93,6 +93,10 @@ Dans le fichier mettez en place les éléments suivants :
 ````yaml
 tls-san:
   - "controlplane-01"
+ingress-controller:
+- traefik
+kubelet-arg:
+- "kube-reserved=cpu=100m,memory=50Mi,ephemeral-storage=1Gi"
 ````
 
 Une fois que le fichier est configuré, lancez les commandes suivantes pour démarrer le service rke2-server et procéder ainsi à l'installation :
@@ -147,6 +151,8 @@ server: https://controlplane-01:9345
 token: <token from server node>
 tls-san:
   - "worker-01"
+kubelet-arg:
+- "kube-reserved=cpu=100m,memory=50Mi,ephemeral-storage=1Gi"
 ````
 
 Enfin installez l'agent :
@@ -196,3 +202,36 @@ helm install rancher rancher-stable/rancher \
 Pour vous connecter à l'url rancher.local, modifiez le ficher hosts de votre machine hôte. Attention ouvrez le en tant qu'administrateur. (Moi par exemple j'ouvre notepadd++ en tant qu'admin et j'ouvre le fichier à partir de l'onglet "ouvrir")
 
 C:/Windows/System32/drivers/etc/hosts
+
+## Installation d'ArgoCD 
+
+Dans un premier temps nous devons créer un fichier de valeur pour initialiser notre ArgoCD : 
+
+````
+vi argocd-values.yaml
+````
+
+Vous pouvez mettre les valeurs suivantes :
+
+````yaml
+global:
+  domain: argocd.local
+
+certificate:
+  enabled: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    tls: true
+````
+
+On peut désormais installer la solution (attention ça sera dans le namespace local):
+
+````
+helm install argo-cd oci://ghcr.io/argoproj/argo-helm/argo-cd --version 10.1.4 -f argocd-values.yaml
+````
