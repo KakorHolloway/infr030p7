@@ -292,7 +292,7 @@ Créez votre propre namespace pour l'exercice via la commande ````oc new-project
 
 Dans un premier temps créez un conteneur avec une image qui va contenir bitnami/kubectl (avec la policy ifnotpresent sur mon cluster). Attention cette image contient uniquement l'invite de commande kubectl, donc il va falloir la laisser tourner via la commande sleep 3600 par exemple au démarrage. 
 
-Lancez la commande ````kubectl get pod```` et confirmez que vous n'avez pas les droits pour lister les pods du namespace. 
+Depuis votre conteneur lancez la commande ````kubectl get pod```` et confirmez que vous n'avez pas les droits pour lister les pods du namespace. 
 
 Créez un role et un rolebinding qui permettrons au serviceaccount monté dans le conteneur de lister les pods (get, watch, list) 
 
